@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ground</title>
+        <script src="js/aframe_1.2.0._min.js">
+        </script>
+    </head>
+
+    <body>
+        <<a-scene background="color: #ffffff">
+            <!--Asset Management System-->
+            <a-assets>
+                <img id="ground_albedo" src="assets/index5_src/TreerootsPines.jpg">
+                <img id="ground_normal" src="assets/index5_src/TreeRootsPine_normal.jpg">
+            </a-assets>
+
+            <!--Ground-->
+            <a-plane 
+                material=   "color:#999999;
+                             src: #ground_albedo;
+                             repeat: 10 10;
+                             normal-map: #ground_normal;
+                             normal-texture-repeat: 10 10;
+                             roughness:0.8"
+                rotation="-90 0 0"
+                scale="20 20 1">
+            </a-plane>
+        </a-scene>
+
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Parent Child Entity Relation</title>
+        <script src="js/aframe_1.2.0._min.js">
+        </script>
+    </head>
+
+<!--position use right  hand rull (x y z)-->
+    
+<body>
+        <<a-scene background="color: #d2d3fa">
+            <a-entity>
+                
+            </a-entity>
+            <!-- Add a box-->
+            <a-box  
+                side="double"
+                color="#e0954f"
+                width="8" 
+                height="4.5"
+                depth="1" 
+                position="0 2 -5">
+
+                <!--Right Eye Circle | Child Entity-->
+                <a-circle position="2 1 0.51" side="double" color="#2b2b2b" scale="1 1 1">
+                </a-circle>
+            </a-box>
+            
+            <!--Left Eye Circle-->
+            <a-circle 
+                position="-2 3 -4.49"
+                side="double"
+                color="#2b2b2b" 
+                scale="1 1 1">
+            </a-circle>
+
+            <!--Cylinder Nose-->
+            <a-cylinder
+                position="0 1.5 -4.5"
+                rotation="90 0 0"
+                scale="0.5 0.5 0.5"
+                color="#e0714f"
+                hieght="6"
+                radius="2"
+                segments-radial="10"
+                open="true"
+                side="double">
+            </a-cylinder>
+
+            <!--White box mouth-->
+            <a-box 
+                scale="3 1 0.2"
+                position="0 0.4 -4.5"
+                side="double"
+                color="#ffffff">
+            </a-box>
+        </a-scene>
+    </body>
+</html>

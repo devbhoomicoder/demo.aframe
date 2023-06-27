@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Primitives Are Made Up Of Entities</title>
+        <script src="js/aframe_1.2.0._min.js">
+        </script>
+    </head>
+
+    <body>
+        <<a-scene background="color: #d2d3fa">
+
+            <!--Asset Management System-->
+            <a-assets>
+                <img id="img_BG" src="assets/index4_src/Background.jpg">
+            </a-assets>
+
+            <!-- BAckground Images | 1360X768 px -->
+            <!-- ? IMG height (m) = width(m) / IMG width (px) * IMG height (px)-->
+            <a-image src="#img_BG" position="0 1.6 -11" scale="13.60 7.68 1"></a-image>
+            
+            <!--Primitives-->
+            <!-- Under the hood they are Entities with a semantic names-->
+            <!-- that have a preset bundle of component with default values-->
+            <!--and map HTML attributes to components data-->
+            <a-box
+                position="-1 0.5 -4">
+            </a-box>
+
+            <!-- ENTITIES -->
+            <!-- They have no appearances, behaviour, or funtionality -->
+            <!-- Untill you attach Components to them-->
+            <!-- ENTITY: box -->
+            <a-entity
+                geometry="primitive: box"
+                position="1 0.5 -4"
+                material="shader:standard; color:#4570ff">
+            </a-entity>
+
+             <!-- Modifies ENTITY: curved image -->
+
+             <!-- Width of Arc = 1 m-->
+             <!-- Length of Arc = 1.111 m-->
+             <!--Angle substended by Arc = 90 deg -->
+             <!-- ? IMG height (m) = width(m) / IMG width (px) * IMG height (px)-->
+            <a-entity
+                geometry=   "primitive: cylinder;
+                             theta-length: 90;
+                             theta-start: 135;
+                             radius: 0.707;
+                             height: 0.626;
+                             open-ended:true"
+                
+                material=   "shader:standard;
+                             color:#ffffff;
+                             side:double;
+                             src:#img_BG"
+                position="0 0.5 0"
+                scale="-10 10 10"
+                             >
+            </a-entity>
+        </a-scene>
+        
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Images And Curved Images Primitives</title>
+        <script src="js/aframe_1.2.0._min.js"></script>
+    </head>
+
+    <body>
+        <a-scene>
+            <!--Load Assets-->
+            <a-assets>
+                <img id="image_1" src="assets/index3_src/1.jpg">
+                <img id="image_2" src="assets/index3_src/2.jpg">
+                <img id="image_3" src="assets/index3_src/3.jpg">
+                <img id="image_4" src="assets/index3_src/4.jpg">
+                <img id="image_5" src="assets/index3_src/5.jpg">
+                <img id="image_6" src="assets/index3_src/6.jpg">
+            </a-assets>
+
+            <!--Image Primitives | Image size 1024x768px-->
+            <!--IMG width (px) = 1 m -->
+
+            <!-- ? IMG height (m) = width(m) / IMG width (px) * IMG height (px)-->
+            <a-image 
+                src="#image_1"
+                position="0 1.5 -3"
+                width="1.024"
+                height="0.75"
+                scale="3 3 1">
+            </a-image>
+
+            <!-- Curved Image Primitive | Single Image | Image Size 1024x768px -->
+            <!-- use calculator to find out arc size https://www.handymath.com/cgi-bin/arc18.cgi?submit=Entry-->
+            <!-- ?Radius of Arc -->
+            <!-- Width of Arc = 1 m-->
+            <!-- Length of Arc = 1.111 m-->
+            <!--Angle substended by Arc = 90 deg -->
+            <!-- ? IMG height (m) = width(m) / IMG width (px) * IMG height (px)-->
+            <a-curvedimage 
+                src="#image_2"
+                
+                theta-length="90"
+                theta-start="135"
+                radius="0.707"
+                height="0.833"
+                position="0 1.5 0"
+                scale= "3 3 3">
+            </a-curvedimage>
+
+            <!-- Width of Arc Reference
+            <a-box
+                color="#AA0000"
+                opacity="0.5"
+                width="3"
+                height="0.1"
+                depth="3"
+                position="0 1.5 -1.5">
+            </a-box> -->
+
+            <!-- Curved Image Primitive | 3 Image Layout | Image Size 1024x768px -->
+            <!-- use calculator to find out arc size https://www.handymath.com/cgi-bin/arc18.cgi?submit=Entry-->
+            <!-- ?Radius of Arc -->
+            <!-- Width of Arc Diameter = 1 m-->
+            <!-- Length of Each IMG = 0.436 m-->
+            <!--Angle substended by Arc = 180 deg -->
+            <!-- Angle substended by each IMG = 50-->
+            <!-- ? IMG height (m) = width(m) / IMG width (px) * IMG height (px)-->
+
+            <!--Right Image-->
+            <a-curvedimage 
+                src="#image_3"
+                
+                theta-length="50"
+                theta-start="90"
+                radius="0.5"
+                height="0.327"
+                position="0 1.5 0"
+                scale= "3 3 3">
+            </a-curvedimage>
+
+            <!--Centre Image-->
+            <a-curvedimage 
+            src="#image_4"
+            
+            theta-length="50"
+            theta-start="155"
+            radius="0.5"
+            height="0.327"
+            position="0 1.5 0"
+            scale= "3 3 3">
+        </a-curvedimage>
+
+        <!--Left Image-->
+        <a-curvedimage 
+            src="#image_5"
+        
+            theta-length="50"
+            theta-start="220"
+            radius="0.5"
+            height="0.327"
+            position="0 1.5 0"
+            scale= "3 3 3">
+    </a-curvedimage>
+        </a-scene>
+    </body>
+</html>

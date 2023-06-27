@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Loading 3D Models</title>
+        <script src="js/aframe_1.2.0._min.js"></script>
+    </head>
+
+    <body>
+        <a-scene>
+            <!-- Assets Manager-->
+            <a-assets>
+                   <img id="sky" src="assets/index8_src/sky2.jpg">
+                
+                <!-- Load GLTF Models | Best with A-Framework-->
+                <a-asset-item 
+                    id="village" 
+                    src="assets/index8_src/3d Models/castle_village_scene/scene.gltf">
+                </a-asset-item>
+            
+                <!-- Load Obj Models | also load mtl file as seperate asset itm-->
+                <a-asset-item 
+                    id="old_Cart" 
+                    src="assets/index8_src/3d Models/old-cart/source/Cart_low.obj">
+                </a-asset-item>
+
+                <a-asset-item 
+                    id="old_Cart_mtl"
+                    src="assets/index8_src/3d Models/old-cart/source/Cart_low.mtl">
+                </a-asset-item>
+            </a-assets>
+
+            <!-- Sky -->
+            <a-sky src="#sky"></a-sky>
+
+            <!--Camera | Adult Eye-->
+            <a-entity position="0 0 50">
+                <a-camera look-controls position="0 1.6 0"></a-camera>
+            </a-entity>
+
+            <!--Add Village to scene -->
+            <a-entity 
+                gltf-model="#village">
+            </a-entity>
+
+            <!--Add old Cart to scene-->
+            <!-- In case Texture not showing up follow the steps below-->
+                <!-- 1. Open mtl file in text editor 2. set texture base color | map_kd textures/Cart_low_initialShadingGroup_BaseColor.png-->
+            <a-entity
+                obj-model="obj: #old_Cart; mtl: #old_Cart_mtl"
+                position="1 0.33 45"
+                rotation="0 60 18"
+                scale="0.006 0.006 0.006"></a-entity>
+        </a-scene>
+    </body>
+</html>

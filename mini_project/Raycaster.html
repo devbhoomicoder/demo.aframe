@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Raycaster</title>
+        <script src="js/aframe_1.2.0._min.js"></script>
+    </head>
+
+    <body>
+        <<a-scene background="color: #363636">
+            
+            <!-- Box -->
+            <a-box 
+                position="5 0.5 0" 
+                rotation="0 45 0" 
+                color="#4CC3D9" 
+                shadow>
+            </a-box>
+            
+            <!-- Cylinder | Visible raycaster-->
+            <a-cylinder 
+                segments-radial="10" color="#23ff11" height="1.6" position="-5 0.8 0" rotation="0 -90 0">
+                    <a-cursor raycaster="showLine:true"></a-cursor>
+            </a-cylinder>
+           
+            <!-- Camera | with custom Cursor--> 
+            <a-entity position="0 0 5">
+                <a-camera look-controls position="0 1.6 0">
+                    <a-entity 
+                        cursor
+                        position="0 0 -1"
+                        geometry="primitive:sphere; radius:0.009"
+                        material="color:#fff; shader:flat"
+                        opacity="0.5">
+                    </a-entity>
+                </a-camera>
+            </a-entity>
+            
+        </a-scene>
+    </body>
+</html>

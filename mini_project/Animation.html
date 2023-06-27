@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animating Objects</title>
+        <script src="js/aframe_1.2.0._min.js"></script>
+    </head>
+
+    <body>
+        <<a-scene background="color: #FAFAFA">
+            <!-- Asset manager-->
+            <a-assets>
+
+                <!-- Ground -->
+                <img id="ground" src="assets/index9_src/ground/Ground_Dirt.jpg">
+                <img id="ground-normal" src="assets/index9_src/ground/Ground_Dirt_Normal.jpg">
+
+            </a-assets>
+            <!-- Ground Plane-->
+            <a-plane
+                material=  "src:#ground; repeat:200 200;
+                            normal-map:#ground-normal; normal-texture-repeat:200 200;
+                            color:#FFFFFF
+                            shader:flat;"
+                position="0 0 -5"
+                rotation="-90 0 0"
+                scale="1000 1000 1">
+            </a-plane>
+
+            <!--Camera CCTV-->
+            <a-entity position="10 0 -5" rotation="0 90 0">
+                <a-camera 
+                    look-controls position="0 1.6 0" 
+                    active="true">
+                </a-camera>
+            </a-entity>
+
+            <!-- Eye Camera -->
+            <a-entity position="0 0 2">
+                <a-camera 
+                    look-controls position="0 1.6 0"
+                    active="true">
+                </a-camera>
+            </a-entity>
+
+            <!-- rotating box-->
+            <!--https://aframe.io/docs/1.2.0/components/animation.html-->
+            <a-box 
+                position="0 4 -5"
+                color="tomato"
+                animation= "property: rotation; 
+                            to: 0 360 0;
+                            loop: 5;
+                            dur: 3000;
+                            easing: linear">
+            </a-box>
+
+            <!--child Box of empty-->
+            <a-entity 
+                position="0 5 -5"
+                animation=  "property: rotation;
+                            to: 0 -360 0;
+                            loop: true;
+                            dur:3000;
+                            easing: linear"> 
+                <a-box 
+                    color="green"
+                    position="2 0 0"
+                    animation=  "property: rotation;
+                                to: 0 -360 0;
+                                loop: true;
+                                dur:3000;
+                                easing: linear">
+                </a-box>
+            </a-entity>
+
+            <!-- Moving Box-->
+            <!--Basic easing functions-->
+            <!-- ease, ease-in, ease-out, ease-in-out -->
+            <!--https://aframe.io/docs/1.2.0/components/animation.html#easings-->
+            <a-box 
+                color="yellow"
+                position="-2 0.5 -5"
+                animation= "property: position;
+                            from: -2 0.5 -7;
+                            to: -2 0.5 -3;
+                            loop: true;
+                            dur:2000;
+                            dir:alternate;
+                            easing: easeOutQuad">
+            </a-box>
+
+            <!--Scaling Box-->
+            <a-box 
+                color="orange"
+                position="2 0.5 -5"
+                animation= "property: scale;
+                            to: 1 0.5 5;
+                            loop: true;
+                            dur:1000;
+                            dir:alternate;
+                            easing: easeOutElastic">
+            </a-box>
+
+            <!-- Animated Color-->
+            <a-sphere 
+                position="0 2.5 -10"
+                radius="1.5"    
+                color="#0000AA"
+                animation= "property: material.color;
+                            from:#0000AA;
+                            to:#00AAFF;
+                            
+                            loop:true;
+                            dir:alternate;
+                            dur:2000;"
+                ></a-sphere>
+
+                <!--Animated Opacity-->
+                <!-- we can use material.opacity or opacity attribute-->
+                <a-cone
+                    color="#484848"
+                    position="0 0.5 -5"
+                    
+                    animation= "property: material.opacity;
+                                from:1;
+                                to: 0;
+                                loop:1000;
+                                dir:alternate"></a-cone>
+        </a-scene>
+    </body>
+</html>

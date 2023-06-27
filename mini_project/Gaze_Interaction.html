@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gaze Interaction</title>
+        <script src="js/aframe_1.2.0._min.js"></script>
+        <script src="js/aframe-event-set-component.min.js"></script>
+    </head>
+
+    <body>
+        <<a-scene background="color: #FAFAFA">
+
+            <!-- Camera | Cursor with Gazing feedback to user--> 
+            <a-entity position="0 0 5">
+                <a-camera look-controls position="0 1.6 0">
+                   
+                    <a-entity 
+                        cursor="fuse:true; 
+                                fuseTimeout:800;"
+                                
+                        animation__click=  "property: scale;
+                                            startEvents: click; 
+                                            easing: easeInCubic; 
+                                            dur: 150; 
+                                            from: 3 3 3; 
+                                            to: 1 1 1"
+                        animation__fusing= "property: scale; 
+                                            startEvents: fusing; 
+                                            easing: linear;
+                                            dur: 800; 
+                                            from: 1 1 1; 
+                                            to: 3 3 3"
+                        animation__mouseleave= "property: scale; 
+                                                startEvents: mouseleave; 
+                                                easing: easeInCubic;
+                                                dur: 200;
+                                                from:3 3 3; 
+                                                to: 1 1 1"
+                        
+                        position="0 0 -1"
+                        geometry="primitive:sphere; radius:0.005"
+                        material="color:#262626; shader:flat"
+                        opacity="0.5" 
+                    </a-entity> 
+
+                    <!--
+                    <a-cursor 
+                        position="0 0 -1"
+                        geometry="primitive:sphere; radius:0.005"
+                        material="color:#363636; shader:flat"
+                        opacity="0.5"
+                        
+                        fuse="true"
+                        fuse-timeout="500"
+                        far="10">
+                    </a-cursor> -->
+                </a-camera>
+            </a-entity>
+
+            <!-- Centre Box | Change Change Color on Cursor/Mouse Enter and Leave Event event-set__nameanything="_event:click.enter/leave"-->
+            <a-box
+                id="redbox"
+                position="0 0.5 0" 
+                rotation="0 45 0" 
+                color="red"
+        
+                event-set__enter="_event:mouseenter;material.opacity:0.6"
+                event-set__leave="_event:mouseleave;material.opacity:1"
+                event-set__tarcol="_event:click; _target: #midpinkbox; material.color:red"
+        
+                shadow>
+            </a-box>
+
+            <!-- Centre Pink Box | Change Change Color on Cursor/Mouse Enter and Leave Event -->
+            <a-box
+                id="midpinkbox"
+                position="0 4 -1" 
+                rotation="0 45 0" 
+                color="pink"
+
+                event-set__resetcolor="_event:click;material.color: pink"
+                shadow>
+            </a-box>
+    
+        </a-scene>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Camera Primitive</title>
+        <script src="js/aframe_1.2.0._min.js"></script>
+    </head>
+
+    <body>
+        <<a-scene background="color: #FAFAFA">
+
+            <!-- Asset Manager-->
+            <a-assets>
+                <img id="ground-1" src="assets/index7_src/Ground_01.png">
+                <img id="ground-1-normal" src="assets/index7_src/Ground_01_Nrm.png">
+            </a-assets>
+
+            <!--Ground | Cobble stone-->
+            <a-plane 
+                position="0 0 -4"
+                rotation="-90 0 0"
+                width="4"
+                height="4"
+                material=  "src:#ground-1;
+                            repeat: 15 15;
+                            normal-map:#ground-1-normal;
+                            normal-texture-repeat: 15 15;
+                            color:#FFFFFF"
+                scale="10 10 10"
+                shadow></a-plane>
+
+                <!--Cylinder-->
+                <a-cylinder 
+                    color="red"
+                    radius="0.5"
+                    height="2"
+                    position="-2 1 0">
+                </a-cylinder>
+
+                <!-- Box -->
+                <a-box
+                    color="#00aa00"
+                    height="2"
+                    depth="4"
+                    position="2 1 0">
+                </a-box>
+
+                <!-- Camera 1 -->
+                <!-- Origin at 0 0 0 in VR mode-->
+                <!-- Origin at 0 0 0 in Desktop mode-->
+                <!-- Average User Height of Adult Eye Level -->
+
+                <a-entity position="0 0 5">
+                    <a-camera 
+                        look-controls position="0 1.6 0"
+                        active="false">
+                    </a-camera>
+                </a-entity>
+
+                <!-- Camera 2 -->
+                <!-- Origin at 0 0 0 in VR mode-->
+                <!-- Origin at 0 0 0 in Desktop mode-->
+                <!-- Average User Height of Kid Eye Level -->
+
+                <a-entity position="0 0 5">
+                    <a-camera
+                        look-controls position="0 0.9 0"
+                        active="true">
+                    </a-camera>
+
+                <!-- Camera 3 | Aerial Camera or Eagle Eye Camera-->
+
+                <a-entity position="0 5 5">
+                    <a-camera
+                        active="false">
+                    </a-camera>
+                </a-entity>
+        </a-scene>
+    </body>
+</html>
