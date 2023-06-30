@@ -97,54 +97,6 @@
     .contributor:hover .linkedIn {
       color: #ffff00;
     }
-
-    /* Adjust the styles for smaller screens */
-    @media (max-width: 768px) {
-      .menu {
-        display: none;
-        /* Hide the menu on smaller screens */
-      }
-
-      .menu-toggle {
-        display: block;
-        /* Show the checkbox on smaller screens */
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 1;
-        opacity: 0;
-      }
-
-      .menu-toggle:checked~.menu {
-        display: flex;
-        /* Show the menu when the toggle is checked */
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .menu-toggle:checked~.menu-icon::before {
-        transform: translateY(8px) rotate(45deg);
-      }
-
-      .menu-toggle:checked~.menu-icon::after {
-        transform: translateY(-8px) rotate(-45deg);
-      }
-
-      .menu-toggle:checked~.menu-icon {
-        background-color: transparent;
-      }
-
-      .menu-icon {
-        display: block;
-        /* Show the menu icon on smaller screens */
-      }
-
-      .menu li {
-        margin: 0 10px;
-        padding: 10px;
-        /* Add padding to create gap between menu items */
-      }
-    }
   </style>
 
 </head>
