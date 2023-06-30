@@ -1,168 +1,216 @@
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html>
 
-  <head>
-    <title>Contributors Page</title>
-    <style>
-      /* CSS styles */
-      body {
-        background-color: #000000;
-        color: #ffffff;
-        font-family: "Ubuntu", sans-serif;
-        background-image: url("https://cdn.glitch.global/82aad4fe-832c-4f6c-95f4-e22417686359/pink_space.gif?v=1687644067166");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        margin: 0;
-        padding: 20px;
+<head>
+  <title>Contributors Page</title>
+  <style>
+    /* CSS styles */
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: "Ubuntu", sans-serif;
+      background-image: url("https://cdn.glitch.global/82aad4fe-832c-4f6c-95f4-e22417686359/pink_space.gif?v=1687644067166");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+    }
+
+    .back-button {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .back-button button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .contributors {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contributor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      width: 200px;
+    }
+
+    .contributor:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contributor img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .contributor .name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .contributor .linkedIn {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contributor .linkedIn:hover {
+      color: #0056b3;
+    }
+
+    /* Additional styles */
+    .contributor,
+    .contributor .name,
+    .contributor .linkedIn {
+      color: #ffffff;
+    }
+
+    .contributor:hover .name,
+    .contributor:hover .linkedIn {
+      color: #ffff00;
+    }
+
+    /* Adjust the styles for smaller screens */
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        /* Hide the menu on smaller screens */
       }
-    
-      h1 {
-        text-align: center;
-        color: #fff;
+
+      .menu-toggle {
+        display: block;
+        /* Show the checkbox on smaller screens */
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+        opacity: 0;
       }
-    
-      .back-button {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-    
-      .back-button button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-    
-      .contributors {
+
+      .menu-toggle:checked~.menu {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-    
-      .contributor {
-        display: flex;
+        /* Show the menu when the toggle is checked */
         flex-direction: column;
         align-items: center;
-        text-align: center;
-        color: #fff;
-        border-radius: 4px;
+      }
+
+      .menu-toggle:checked~.menu-icon::before {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .menu-toggle:checked~.menu-icon::after {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .menu-toggle:checked~.menu-icon {
+        background-color: transparent;
+      }
+
+      .menu-icon {
+        display: block;
+        /* Show the menu icon on smaller screens */
+      }
+
+      .menu li {
+        margin: 0 10px;
         padding: 10px;
-        margin: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        width: 200px;
+        /* Add padding to create gap between menu items */
       }
-    
-      .contributor:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="back-button">
+    <button onclick="goBack()">Back to Home</button>
+  </div>
+
+  <h1>Contributors</h1>
+  <div class="contributors" id="contributors-container"></div>
+
+  <script>
+    // JavaScript data
+    const contributors = [
+      {
+        name: 'Sagar Nayal',
+        picture: 'profile.png',
+        linkedIn: 'https://www.linkedin.com/in/sagar-nayal/'
+      },
+      {
+        name: 'Manish Kainthola',
+        picture: 'profile.png',
+        linkedIn: 'https://www.linkedin.com/in/janesmith/'
+      },
+
+      {
+        name: 'Udit Joshi',
+        picture: 'profile.png',
+        linkedIn: 'https://www.linkedin.com/in/janesmith/'
       }
-    
-      .contributor img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        margin-bottom: 10px;
-      }
-    
-      .contributor .name {
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-    
-      .contributor .linkedIn {
-        color: #007bff;
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-    
-      .contributor .linkedIn:hover {
-        color: #0056b3;
-      }
-    
-      /* Additional styles */
-      .contributor,
-      .contributor .name,
-      .contributor .linkedIn {
-        color: #ffffff;
-      }
-    
-      .contributor:hover .name,
-      .contributor:hover .linkedIn {
-        color: #ffff00;
-      }
-    </style>
-    
-  </head>
+      // Add more contributors here...
+    ];
 
-  <body>
-    <div class="back-button">
-      <button onclick="goBack()">Back to Home</button>
-    </div>
+    // Create contributors elements dynamically
+    const container = document.getElementById('contributors-container');
 
-    <h1>Contributors</h1>
-    <div class="contributors" id="contributors-container"></div>
+    contributors.forEach(contributor => {
+      const contributorElement = document.createElement('div');
+      contributorElement.className = 'contributor';
 
-    <script>
-      // JavaScript data
-      const contributors = [
-        {
-          name: 'Sagar Nayal',
-          picture: 'profile.png',
-          linkedIn: 'https://www.linkedin.com/in/sagar-nayal/'
-        },
-        {
-          name: 'Manish Kainthola',
-          picture: 'profile.png',
-          linkedIn: 'https://www.linkedin.com/in/janesmith/'
-        },
+      const pictureElement = document.createElement('img');
+      pictureElement.src = contributor.picture;
 
-        {
-          name: 'Udit Joshi',
-          picture: 'profile.png',
-          linkedIn: 'https://www.linkedin.com/in/janesmith/'
-        }
-        // Add more contributors here...
-      ];
+      const nameElement = document.createElement('span');
+      nameElement.className = 'name';
+      nameElement.textContent = contributor.name;
 
-      // Create contributors elements dynamically
-      const container = document.getElementById('contributors-container');
+      const linkElement = document.createElement('a');
+      linkElement.href = contributor.linkedIn;
+      linkElement.className = 'linkedIn';
+      linkElement.textContent = 'LinkedIn Profile';
 
-      contributors.forEach(contributor => {
-        const contributorElement = document.createElement('div');
-        contributorElement.className = 'contributor';
+      contributorElement.appendChild(pictureElement);
+      contributorElement.appendChild(nameElement);
+      contributorElement.appendChild(document.createElement('br'));
+      contributorElement.appendChild(linkElement);
 
-        const pictureElement = document.createElement('img');
-        pictureElement.src = contributor.picture;
+      container.appendChild(contributorElement);
+    });
 
-        const nameElement = document.createElement('span');
-        nameElement.className = 'name';
-        nameElement.textContent = contributor.name;
+    // Go back to the previous page
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
 
-        const linkElement = document.createElement('a');
-        linkElement.href = contributor.linkedIn;
-        linkElement.className = 'linkedIn';
-        linkElement.textContent = 'LinkedIn Profile';
-
-        contributorElement.appendChild(pictureElement);
-        contributorElement.appendChild(nameElement);
-        contributorElement.appendChild(document.createElement('br'));
-        contributorElement.appendChild(linkElement);
-
-        container.appendChild(contributorElement);
-      });
-
-      // Go back to the previous page
-      function goBack() {
-        window.history.back();
-      }
-    </script>
-  </body>
-
-  </html>
+</html>
